@@ -3,6 +3,7 @@ import { AppBar, Toolbar, Typography, IconButton, Badge } from "@mui/material";
 import { ShoppingCart } from "@mui/icons-material";
 import ButtonComp from "../Button/ButtonComp";
 import { makeStyles, } from "@mui/styles";
+import { Link, NavLink } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -30,7 +31,9 @@ const Header = () => {
                     Codecademy Shop
                 </Typography>
                 <div>
-                    <ButtonComp color="inherit">Register</ButtonComp>
+                    <NavLink to="/register">
+                        <ButtonComp color="inherit">Register</ButtonComp>
+                    </NavLink>
                     <IconButton aria-label="access shopping cart" color="inherit" >
                         <Badge color="secondary">
                             <ShoppingCart />

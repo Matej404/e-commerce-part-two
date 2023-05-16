@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from "@mui/material";
 
-const ButtonComp = () => {
+const ButtonComp = (props) => {
 
-    //const { children, isLoading, ...rest } = props;
+    const { children, isLoading, ...rest } = props;
 
     return (
-        <Button>
+        <Button {...rest}>
+            {children}
         </Button>
     )
 }

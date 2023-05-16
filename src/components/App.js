@@ -26,7 +26,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-        <Route path="register/*" element={<Register />} />
+        <Route path="/register" element={<Register />} />
         </Routes>
       </Router>
       </ThemeProvider>
