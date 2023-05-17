@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Formik, Form } from "formik"; 
 import "./Register.css";
 import TextFieldComp from "../../components/TextField/TextField";
 import ButtonComp from "../../components/Button/ButtonComp";
 import "./Register.css";
 import * as Yup from "yup";
+import { registerUser } from "../../store/auth/Auth.actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
+    const dispatch = useDispatch();
+    const { error } = useSelector(state => state.auth);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleRegister = async (credentials) => {
+        try {
+            setIsLoading(true);
+            await dispatch(registerUser(credentials));
+            setIsLoading(false);
+        } catch(err) {
+            setIsLoading(false);
+        }
+    }
+
     const registrationSchema = Yup.object().shape({
         email: Yup.string
           .email("Invalid Email address")
@@ -27,6 +43,10 @@ const Register = () => {
                       initialValues={{email: '', password: ''}}
                       validationSchema={registrationSchema}
                       validateOnBlur
+                      onSubmit={async (data) => {
+                        const { confirmPassword, ...credentials } = data;
+                        await handleRegister(credentials);
+                      }}
                     >
                         <Form className="baseForm">
                             <header className="baseFormHeader">
