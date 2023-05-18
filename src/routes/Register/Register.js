@@ -24,7 +24,7 @@ const Register = () => {
     }
 
     const registrationSchema = Yup.object().shape({
-        email: Yup.string
+        email: Yup.string()
           .email("Invalid Email address")
           .required("Email address is required"),
 
@@ -57,13 +57,18 @@ const Register = () => {
                                 name="email"
                                 id="email-input"
                               />
-                             <TextFieldComp
-                                label="Confirm Password"
-                                name="confirmPassword"
-                                id="confirm-password-input"
-                                type="password"
+
+                           <TextFieldComp
+                               label="Password"
+                               name="password"
+                               id="password-input"
+                               type="password"
                               />
-                            <ButtonComp variant="contained" color="primary" type="submit">Submit</ButtonComp>
+                        
+                              {
+                                error && <div>{error}</div>
+                              }
+                            <ButtonComp variant="contained" color="primary" type="submit" isLoading={isLoading}>Submit</ButtonComp>
                             <hr></hr>
                             <div style={{white: "100%", display: "flex", justifyContent: "center"}}>
                                 <p>Register white</p>

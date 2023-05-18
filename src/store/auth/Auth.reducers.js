@@ -15,15 +15,17 @@ const authSlice = createSlice({
         builder
           // Registration success
           .addCase(registerUser.fulfilled, (state, action) => {
-            //const { error } = action.payload;
-            //state.isAuthenticated = false;
-            //state.error = error;
+            const { error } = action.payload;
+            state.isAuthenticated = false;
+            state.error = error;
           })
           // Registration failure
-          addCase(registerUser.rejected, (state, action) => {
+          .addCase(registerUser.rejected, (state, action) => {
             const { error } = action.payload;
             state.isAuthenticated = false;
             state.error = error;
           })
     }
 })
+
+export default authSlice.reducer;
