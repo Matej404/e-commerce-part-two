@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './Header/Header';
 import Register from '../routes/Register/Register';
+import Orders from '../routes/Orders/Orders';
 import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
 
@@ -26,7 +27,8 @@ function App() {
       <Router>
         <Header />
         <Routes>
-        <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/orders" element={<Orders />} />
         </Routes>
       </Router>
       </ThemeProvider>

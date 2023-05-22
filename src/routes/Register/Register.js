@@ -44,7 +44,7 @@ const Register = () => {
                       validationSchema={registrationSchema}
                       validateOnBlur
                       onSubmit={async (data) => {
-                        const { confirmPassword, ...credentials } = data;
+                        const { ...credentials } = data;
                         await handleRegister(credentials);
                       }}
                     >
