@@ -6,7 +6,9 @@ export const registerUser = createAsyncThunk(
     async (credentials, thunkAPI) => {
         try {
             await register(credentials);
-            return {};
+            return {
+                isAuthenticated: true
+            };
         } catch(err) {
             throw err;
         }

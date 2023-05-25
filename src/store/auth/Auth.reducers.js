@@ -15,8 +15,8 @@ const authSlice = createSlice({
         builder
           // Registration success
           .addCase(registerUser.fulfilled, (state, action) => {
-            const { error } = action.payload;
-            state.isAuthenticated = false;
+            const { isAuthenticated, error } = action.payload;
+            state.isAuthenticated = isAuthenticated;
             state.error = error;
           })
           // Registration failure

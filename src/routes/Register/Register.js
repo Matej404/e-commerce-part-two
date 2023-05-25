@@ -3,6 +3,7 @@ import { Formik, Form } from "formik";
 import "./Register.css";
 import TextFieldComp from "../../components/TextField/TextField";
 import ButtonComp from "../../components/Button/ButtonComp";
+import Orders from "../Orders/Orders";
 import "./Register.css";
 import * as Yup from "yup";
 import { registerUser } from "../../store/auth/Auth.actions";
@@ -10,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 const Register = () => {
     const dispatch = useDispatch();
-    const { error } = useSelector(state => state.auth);
+    const { error, isAuthenticated } = useSelector(state => state.auth);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleRegister = async (credentials) => {
@@ -36,6 +37,8 @@ const Register = () => {
     })
 
     return(
+        <div>
+            {!isAuthenticated &&
         <div className="app">
             <div className="formComp">
                 <div className="formWrapper">
@@ -81,6 +84,9 @@ const Register = () => {
                     </Formik>
                 </div>
             </div>
+        </div>}
+        {isAuthenticated && 
+        <Orders />}
         </div>
     )
 }

@@ -4,12 +4,13 @@ import "../Register/Register.css";
 import * as Yup from "yup";
 import TextFieldComp from "../../components/TextField/TextField";
 import ButtonComp from "../../components/Button/ButtonComp";
+import Orders from "../Orders/Orders";
 import { useDispatch, useSelector } from "react-redux"; 
 import { loginUser } from "../../store/auth/Auth.actions";
 
 const Login = () => {
     const dispatch = useDispatch();
-    const { error } = useSelector(state => state.auth);
+    const { error, isAuthenticated } = useSelector(state => state.auth);
     const [isLoading, setIsLoading] = useState(false);
 
     const handleLogin = async(credentials) => {
@@ -32,6 +33,8 @@ const Login = () => {
     })
 
     return(
+        <div>
+        {!isAuthenticated &&
         <div className="app">
             <div className="formComp">
                 <div className="formWrapper">
@@ -74,6 +77,11 @@ const Login = () => {
                     </Formik>
                 </div>
             </div>
+        </div>
+        }
+        {isAuthenticated && 
+            <Orders />
+        }
         </div>
     )
 };
