@@ -37,7 +37,7 @@ const Header = () => {
                     <ButtonComp color="inherit" component={Link} to={`/register`}>Register</ButtonComp>
                   }
                   { !isAuthenticated &&
-                    <ButtonComp color="inherit" component={Link} to={`/login`}>Login</ButtonComp>
+                    <ButtonComp color="inherit" component={Link} to={`/login`}>Log in</ButtonComp>
                   }
                   { isAuthenticated &&
                     <ButtonComp color="inherit" component={Link} to={`/orders`}>My Orders</ButtonComp>

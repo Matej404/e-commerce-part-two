@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { register } from "../../apis/auth";
+import { register, login } from "../../apis/auth";
 
 export const registerUser = createAsyncThunk(
     'auth/registerUser',
@@ -9,6 +9,21 @@ export const registerUser = createAsyncThunk(
             return {};
         } catch(err) {
             throw err;
+        }
+    }
+);
+
+export const loginUser = createAsyncThunk(
+    'auth/loginUser',
+    async(credentials, thunkAPI) => {
+        try {
+            const response = await login(credentials);
+            return {
+                user: response,
+                isAuthenticated: true
+            }
+        } catch(err) {
+            throw(err);
         }
     }
 );
