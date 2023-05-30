@@ -1,11 +1,22 @@
 import React from "react";
 import './Orders.css';
+import ButtonComp from "../../components/Button/ButtonComp";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../store/auth/Auth.actions";
 
 function Orders() {
+    const dispatch = useDispatch();
+    //const { error, isAuthenticated } = useSelector(state => state.auth);
+
+    const handleLogout = () => {
+        dispatch(logoutUser());
+      };
 
     return(
-        <div>
-            Orders
+        <div className="orders">
+            <ButtonComp variant="contained" onClick={handleLogout} >
+                Logout
+            </ButtonComp>
         </div>
     )
 };

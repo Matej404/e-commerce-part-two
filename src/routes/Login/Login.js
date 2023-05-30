@@ -11,7 +11,7 @@ import { loginUser } from "../../store/auth/Auth.actions";
 const Login = () => {
     const dispatch = useDispatch();
     const { error, isAuthenticated } = useSelector(state => state.auth);
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleLogin = async(credentials) => {
         try {

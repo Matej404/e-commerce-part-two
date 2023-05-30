@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerUser, loginUser } from "./Auth.actions";
+import { registerUser, loginUser, logoutUser } from "./Auth.actions";
 
 const initialState = {
     isFetching: false,
@@ -37,6 +37,17 @@ const authSlice = createSlice({
             state.isAuthenticated = false;
             state.error = error;
           })
+         //Logout success
+         .addCase(logoutUser.fulfilled, (state) => {
+           state.isAuthenticated = false;
+           state.error = null;
+         })
+
+         //logOut failure
+         .addCase(logoutUser.rejected, (state, action) => {
+            const error = action.error.message;
+            state.error = error;
+         })
     }
 })
 

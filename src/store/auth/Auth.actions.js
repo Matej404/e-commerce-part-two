@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { register, login } from "../../apis/auth";
+import { register, login, logout } from "../../apis/auth";
 
 export const registerUser = createAsyncThunk(
     'auth/registerUser',
@@ -29,3 +29,19 @@ export const loginUser = createAsyncThunk(
         }
     }
 );
+
+// logout user
+export const logoutUser = createAsyncThunk(
+    'auth/logautUser',
+    async(credentials, thunkAPI) => {
+        try {
+            await logout();
+
+            return {
+                isAuthenticated: false
+            }
+        } catch(err) {
+            throw(err);
+        }
+    }
+)
