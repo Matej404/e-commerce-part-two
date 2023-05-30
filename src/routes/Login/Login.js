@@ -71,7 +71,7 @@ const Login = () => {
                         </div>
                         <div className="social-btn-container">
                             <ButtonComp variant="contained" className="facebook-btn" >Facebook</ButtonComp>
-                            <ButtonComp variant="contained" className="google-btn" >Google</ButtonComp>
+                            <ButtonComp variant="contained" className="google-btn" href="/http://localhost:4000/auth/google">Google</ButtonComp>
                         </div>
                       </Form>
                     </Formik>
