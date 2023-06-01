@@ -4,6 +4,7 @@ import Header from './Header/Header';
 import Register from '../routes/Register/Register';
 import Login from '../routes/Login/Login';
 import Orders from '../routes/Orders/Orders';
+import Home from './ProductList/Home';
 import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
 
@@ -28,6 +29,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
+            <Route path="/" element={<Home />} />
             <Route path="/register" element={<Register />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/login" element={<Login />} />
