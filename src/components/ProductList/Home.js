@@ -4,27 +4,27 @@ import { loadProducts } from "../../store/products/products.actions";
 import Product from "../Product/Product";
 import "./Home.css";
 
-
 const Home = () => {
+
     const dispatch = useDispatch();
-    const { products } = useSelector(state => state.products);
+    const products = useSelector(state => state.products);
+
 
     useEffect(() => {
-        async function load() {
-            await dispatch(loadProducts)
+        const load = async() => {
+            await dispatch(loadProducts())
         }
-        load()
-    }, [dispatch]);
+        load();
+    }, [dispatch])
 
     return(
         <div className="home">
-            {products.map((product) => (
-                <Product
-                  key={product.id}
-                  name={product.name}
-                  description={product.description}
-                 />
-            ))}
+          { products && Object.keys(products).length > 0 &&
+            Object.keys(products).map((key) => {
+              const product = products[key];
+                return <Product data={product} key={product.id} />
+          })
+         }
         </div>
     )
 }
