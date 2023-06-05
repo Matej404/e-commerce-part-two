@@ -6,7 +6,6 @@ import { logoutUser } from "../../store/auth/Auth.actions";
 
 function Orders() {
     const dispatch = useDispatch();
-    //const { error, isAuthenticated } = useSelector(state => state.auth);
 
     const handleLogout = () => {
         dispatch(logoutUser());

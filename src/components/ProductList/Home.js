@@ -20,11 +20,11 @@ const Home = () => {
     return(
         <div className="home">
           { products && Object.keys(products).length > 0 &&
-            Object.keys(products).map((product) => (
+            Object.keys(products).map((productId) => (
                 <Product
-                key={product.id}
-                name={product.name}
-                description={product.description}
+                key={productId}
+                name={products[productId].name}
+                description={products[productId].description}
               />
             ))
          }
