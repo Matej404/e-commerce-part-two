@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadProducts } from "./products.actions";
+import { loadProduct, loadProducts } from "./products.actions";
 
 const initialState = {};
 
@@ -15,6 +15,11 @@ const productSlice = createSlice({
                 const { id } = product;
                 state[id] = product;
             })
+        })
+
+        .addCase(loadProduct.fulfilled, (state, action) => {
+            const { product } = action.payload;
+            state[product.id] = product;
         })
     }
 })
