@@ -3,6 +3,8 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { loadProduct } from "../../store/products/products.actions";
 import "./ProductDetails.css";
+import ButtonComp from "../Button/ButtonComp";
+import { addItem } from "../../store/cart/Cart.action";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -19,15 +21,23 @@ const ProductDetails = () => {
     }
   }, [dispatch, products, productId]);
 
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  }
+
+  const handleDecrement = () => {
+    setQuantity(quantity - 1);
+  }
+
   /*
   useEffect(() => {
     dispatch(loadProduct(productId));
   }, [dispatch, productId]);
-/*
-  const handleAddToCart = () => {
-    dispatch(addToCart(productId, quantity));
-  };
-  */
+*/
+
+const handleAddToCart = async() => {
+    await dispatch(addItem(product, quantity))
+}
 
   if (!product) {
     return <div>Loading...</div>;
@@ -41,13 +51,8 @@ const ProductDetails = () => {
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       <label htmlFor="quantity">Quantity:</label>
-      <input
-        type="number"
-        id="quantity"
-        min="1"
-        value={quantity}
-        onChange={(e) => setQuantity(parseInt(e.target.value))}
-      />
+
+      <ButtonComp onClick={handleAddToCart}>Add to Cart</ButtonComp>
     </div>
   );
 };
