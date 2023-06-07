@@ -25,6 +25,7 @@ const Home = () => {
                 key={products[product].id}
                 name={products[product].name}
                 description={products[product].description}
+                productId={products[product].id}
               />
             ))
          }
