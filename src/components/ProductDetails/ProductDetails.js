@@ -5,6 +5,7 @@ import { loadProduct } from "../../store/products/products.actions";
 import "./ProductDetails.css";
 import ButtonComp from "../Button/ButtonComp";
 import { addItem } from "../../store/cart/Cart.action";
+import Incrementer from "../Incrementer/Incrementer";
 
 const ProductDetails = () => {
   const { productId } = useParams();
@@ -51,7 +52,11 @@ const handleAddToCart = async() => {
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
       <label htmlFor="quantity">Quantity:</label>
-
+      <Incrementer 
+         onIncrement={handleIncrement} 
+         onDecrement={handleDecrement}
+         value={quantity}
+       />
       <ButtonComp onClick={handleAddToCart}>Add to Cart</ButtonComp>
     </div>
   );
