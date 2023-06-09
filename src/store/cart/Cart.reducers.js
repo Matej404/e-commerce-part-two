@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addItem } from "./Cart.action"; 
+import { addItem, removeItem } from "./Cart.action"; 
 
 const initialState = {};
 
@@ -12,6 +12,10 @@ const cartSlice = createSlice({
         .addCase(addItem.fulfilled, (state, action) => {
             const item = action.payload;
             state.item.push(item);
+        })
+        .addCase(removeItem.fulfilled, (state, action) => {
+            const { item } = action.payload;
+            state.items = state.items.filter((product) => product.cartItemId !== item);
         })
     }
 })

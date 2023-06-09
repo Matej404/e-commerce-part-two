@@ -6,6 +6,7 @@ import Login from '../routes/Login/Login';
 import Orders from '../routes/Orders/Orders';
 import ProductDetails from './ProductDetails/ProductDetails';
 import Home from './ProductList/Home';
+import Cart from '../routes/Cart/Cart';
 import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
 
@@ -35,6 +36,8 @@ function App() {
             <Route path="/register" element={<Register />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/login" element={<Login />} />
+
+            <Route path="/cart" element={<Cart />} />
         </Routes>
       </Router>
       </ThemeProvider>

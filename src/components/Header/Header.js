@@ -42,7 +42,7 @@ const Header = () => {
                   { isAuthenticated &&
                     <ButtonComp color="inherit" component={Link} to={`/orders`}>My Orders</ButtonComp>
                   }
-                    <IconButton aria-label="access shopping cart" color="inherit" >
+                    <IconButton aria-label="access shopping cart" color="inherit" component={Link} to={`/cart`} >
                         <Badge color="secondary">
                             <ShoppingCart />
                         </Badge>
