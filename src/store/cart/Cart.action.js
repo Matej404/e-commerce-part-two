@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { addToCart, removeFromCart } from "../../apis/cart";
+import { addToCart, removeFromCart, fetchCard } from "../../apis/cart";
 
 export const addItem = createAsyncThunk(
     'cart/addItem',
@@ -28,6 +28,21 @@ export const removeItem = createAsyncThunk(
 
             return {
                 item: cartItemId
+            }
+        } catch(err) {
+            throw err;
+        }
+    }
+)
+
+export const loadCart = createAsyncThunk(
+    'cart/loadCart',
+    async(params, thunkAPI) => {
+        try {
+            const response = await fetchCard();
+
+            return {
+                cart: response
             }
         } catch(err) {
             throw err;

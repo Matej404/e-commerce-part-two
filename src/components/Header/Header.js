@@ -25,6 +25,8 @@ const Header = () => {
     
       const classes = useStyles();
       const { isAuthenticated } = useSelector(state => state.auth)
+      const { items } = useSelector(state => state.cart);
+      console.log("1Cart items:", items); // Add this line for debugging
 
     return(
         <AppBar position="static">
@@ -43,7 +45,7 @@ const Header = () => {
                     <ButtonComp color="inherit" component={Link} to={`/orders`}>My Orders</ButtonComp>
                   }
                     <IconButton aria-label="access shopping cart" color="inherit" component={Link} to={`/cart`} >
-                        <Badge color="secondary">
+                        <Badge badgeContent={items?.length || 0} color="secondary">
                             <ShoppingCart />
                         </Badge>
                     </IconButton>
