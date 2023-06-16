@@ -22,6 +22,16 @@ export const login = async(credentials) => {
     }
 }
 
+export const isLoggedIn = async() => {
+    try {
+        const response = await API.get('auth/logged_in')
+
+        return response.data;
+    }catch(err) {
+        throw err.response.data;
+    }
+}
+
 //logout
 export const logout = async() => {
     try {

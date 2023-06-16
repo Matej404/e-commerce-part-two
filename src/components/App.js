@@ -9,6 +9,9 @@ import Home from './ProductList/Home';
 import Cart from '../routes/Cart/Cart';
 import { createTheme } from '@mui/material';
 import { ThemeProvider } from '@mui/material';
+import { checkLoginStatus } from '../store/auth/Auth.actions';
+import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
 
 const theme = createTheme({
   palette: {
@@ -25,6 +28,15 @@ const theme = createTheme({
 });
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const isLoggedIn = async() => {
+      await dispatch(checkLoginStatus());
+    }
+    isLoggedIn()
+  }, [dispatch]);
+
   return (
     <div  style={{flex: 1}}>
       <ThemeProvider theme={theme}>
